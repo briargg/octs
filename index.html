@@ -30,6 +30,7 @@
       --crema-d: #D4C9B0;
       --gris: #9A9090;
       --r: .4rem;
+      --notif-bg: rgba(139,105,20,.15);
     }
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--negro); }
@@ -187,13 +188,158 @@
       border-bottom: 1px solid rgba(139,105,20,.3);
       flex-wrap: wrap;
       gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    .panel-header-logo { font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .08em; color: var(--gold-l); }
+    .panel-header-logo { font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .08em; color: var(--gold-l); display: flex; align-items: center; gap: .5rem; }
     .panel-header-user { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
     .panel-header-user span { font-size: .8rem; color: var(--crema-d); }
     .btn-logout { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .08em; padding: .3rem .8rem; background: transparent; border: 1px solid rgba(139,105,20,.5); color: var(--gold); border-radius: var(--r); cursor: pointer; text-transform: uppercase; transition: all .3s; }
     .btn-logout:hover { background: rgba(92,10,10,.4); }
     .panel-body { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+    /* ===== NOTIFICACIONES ===== */
+    .notificaciones-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .notificaciones-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .notif-item {
+      background: var(--notif-bg);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1rem;
+      border-radius: var(--r);
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .notif-item .notif-texto { font-size: .9rem; color: var(--crema); flex: 1; }
+    .notif-item .notif-fecha { font-size: .7rem; color: var(--gris); white-space: nowrap; }
+    .notif-item .notif-autor { font-family: 'Cinzel', serif; font-size: .65rem; color: var(--gold-l); }
+    .notif-nueva {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .notif-nueva input {
+      flex: 1;
+      min-width: 150px;
+      padding: .6rem .8rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: .9rem;
+      transition: border-color .3s;
+    }
+    .notif-nueva input:focus { outline: none; border-color: var(--gold); }
+    .notif-nueva button {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .08em;
+      padding: .5rem 1.2rem;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      color: var(--gold-xl);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+    .notif-nueva button:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139,105,20,.3); }
+
+    /* ===== AGENDA ===== */
+    .agenda-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .agenda-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .evento-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .evento-item .evento-info { flex: 1; }
+    .evento-item .evento-titulo { font-family: 'Cinzel', serif; font-size: .85rem; color: var(--gold-l); }
+    .evento-item .evento-desc { font-size: .85rem; color: var(--crema-d); }
+    .evento-item .evento-fecha { font-size: .75rem; color: var(--gris); }
+    .evento-item .evento-acciones { display: flex; gap: 0.5rem; }
+    .btn-evento { font-family: 'Cinzel', serif; font-size: .55rem; letter-spacing: .06em; padding: .3rem .8rem; background: transparent; border: 1px solid rgba(139,105,20,.5); color: var(--gold); border-radius: var(--r); cursor: pointer; text-transform: uppercase; transition: all .3s; }
+    .btn-evento:hover { background: rgba(139,105,20,.15); }
+    .evento-nuevo {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .evento-nuevo input,
+    .evento-nuevo textarea {
+      padding: .6rem .8rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: .85rem;
+      transition: border-color .3s;
+    }
+    .evento-nuevo input:focus,
+    .evento-nuevo textarea:focus { outline: none; border-color: var(--gold); }
+    .evento-nuevo input { flex: 2; min-width: 120px; }
+    .evento-nuevo textarea { flex: 3; min-width: 150px; resize: vertical; min-height: 40px; }
+    .evento-nuevo button {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .08em;
+      padding: .5rem 1.2rem;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      color: var(--gold-xl);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+    .evento-nuevo button:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(139,105,20,.3); }
 
     /* ===== PERFIL ===== */
     .perfil-section {
@@ -223,12 +369,12 @@
     /* ===== RUTA ===== */
     .ruta-section { background: rgba(255,255,255,.03); border: 1px solid rgba(139,105,20,.25); border-radius: .8rem; padding: 1.5rem; margin-bottom: 1.5rem; }
     .ruta-section h3 { font-family: 'Cinzel', serif; color: var(--gold-l); font-size: 1rem; margin-bottom: 1rem; letter-spacing: .08em; display: flex; align-items: center; gap: .6rem; }
-    .ruta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .ruta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
     .ruta-item { background: rgba(255,255,255,.04); border: 1px solid rgba(139,105,20,.2); border-radius: .6rem; padding: 1rem; text-align: center; transition: all .3s; cursor: pointer; }
     .ruta-item:hover { border-color: var(--gold); background: rgba(139,105,20,.08); transform: translateY(-3px); }
     .ruta-item .icono { font-size: 1.8rem; margin-bottom: .3rem; }
     .ruta-item h4 { font-family: 'Cinzel', serif; font-size: .7rem; color: var(--gold-l); letter-spacing: .06em; margin-bottom: .1rem; }
-    .ruta-item p { font-size: .7rem; color: var(--crema-d); }
+    .ruta-item p { font-size: .65rem; color: var(--crema-d); }
     .ruta-item .progreso { margin-top: .6rem; height: 3px; background: rgba(255,255,255,.1); border-radius: 2px; overflow: hidden; }
     .ruta-item .progreso-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-xl)); border-radius: 2px; transition: width .6s; }
     .ruta-item.completada { border-color: var(--gold); background: rgba(139,105,20,.12); }
@@ -240,11 +386,11 @@
     .escuela-acordeon:hover { border-color: rgba(139,105,20,.5); }
     .escuela-acordeon-header { padding: 1rem 1.2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,.03); transition: background .3s; }
     .escuela-acordeon-header:hover { background: rgba(139,105,20,.08); }
-    .escuela-acordeon-header .titulo { display: flex; align-items: center; gap: 0.8rem; }
+    .escuela-acordeon-header .titulo { display: flex; align-items: center; gap: 0.8rem; flex: 1; }
     .escuela-acordeon-header .titulo .icono { font-size: 1.5rem; }
     .escuela-acordeon-header .titulo h4 { font-family: 'Cinzel', serif; color: var(--gold-l); font-size: .8rem; letter-spacing: .06em; }
     .escuela-acordeon-header .titulo p { font-size: .7rem; color: var(--crema-d); }
-    .escuela-acordeon-header .flecha { font-size: 1rem; color: var(--gold); transition: transform .3s; }
+    .escuela-acordeon-header .flecha { font-size: 1rem; color: var(--gold); transition: transform .3s; flex-shrink: 0; }
     .escuela-acordeon-header .flecha.abierto { transform: rotate(180deg); }
     .escuela-acordeon-body { padding: 0 1.2rem 1.2rem; display: none; }
     .escuela-acordeon-body.abierto { display: block; }
@@ -267,6 +413,46 @@
     .libro-card textarea:focus { outline: none; border-color: var(--gold); }
     .libro-card .notas-guardadas { font-size: .7rem; color: var(--gris); margin-top: .2rem; display: none; }
     .libro-card .notas-guardadas.visible { display: block; }
+
+    /* ===== VIDEOS YOUTUBE ===== */
+    .videos-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .videos-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: .08em;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .video-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .video-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .video-item iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+    .video-item .video-info { padding: 0.8rem 1rem; }
+    .video-item .video-info h4 { font-family: 'Cinzel', serif; font-size: .75rem; color: var(--gold-l); margin-bottom: .1rem; }
+    .video-item .video-info p { font-size: .75rem; color: var(--crema-d); }
 
     /* ===== DRIVE ===== */
     .drive-section { background: rgba(255,255,255,.03); border: 1px solid rgba(139,105,20,.25); border-radius: .8rem; padding: 1.5rem; margin-bottom: 1.5rem; }
@@ -331,6 +517,10 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 800px) {
+      .ruta-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .videos-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 600px) {
       section { padding: 3rem 1rem; }
       .filos-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -344,6 +534,9 @@
       .drive-iframe { height: 220px; }
       .ing-form { padding: 1.2rem; }
       .modal { padding: 1.5rem 1rem; margin: 0.5rem; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .evento-nuevo { flex-direction: column; }
+      .evento-nuevo textarea { min-height: 30px; }
     }
     @media (max-width: 400px) {
       .filos-grid { grid-template-columns: 1fr; }
@@ -559,15 +752,96 @@
       </div>
     </div>
 
+    <!-- NOTIFICACIONES -->
+    <div class="notificaciones-section">
+      <h3>🔔 Notificaciones</h3>
+      <div class="notif-nueva">
+        <input type="text" id="input-notificacion" placeholder="Escribe una notificación para todos...">
+        <button onclick="publicarNotificacion()">Publicar ✠</button>
+      </div>
+      <div id="notificaciones-container"></div>
+    </div>
+
+    <!-- AGENDA -->
+    <div class="agenda-section">
+      <h3>📅 Agenda de Eventos</h3>
+      <div class="evento-nuevo">
+        <input type="text" id="evento-titulo" placeholder="Título del evento...">
+        <input type="text" id="evento-fecha" placeholder="Fecha (ej: 15/07/2025 20:00)">
+        <textarea id="evento-desc" placeholder="Descripción del evento..."></textarea>
+        <button onclick="agregarEvento()">Agregar ✠</button>
+      </div>
+      <div id="agenda-container"></div>
+    </div>
+
     <!-- RUTA -->
     <div class="ruta-section">
       <h3>📜 Tu Ruta de Estudio</h3>
       <div class="ruta-grid" id="ruta-grid"></div>
     </div>
 
+    <!-- VIDEOS YOUTUBE -->
+    <div class="videos-section">
+      <h3>▶️ Videos de Estudio</h3>
+      <div class="videos-grid">
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Introducción a la Cábala</h4>
+            <p>Fundamentos del Árbol de la Vida</p>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 2" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Historia del Temple</h4>
+            <p>De Jerusalén a la actualidad</p>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 3" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Simbolismo Masónico</h4>
+            <p>Las herramientas del constructor</p>
+          </div>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 4" allowfullscreen loading="lazy"></iframe>
+          <div class="video-info">
+            <h4>Alquimia Interior</h4>
+            <p>Las tres etapas de la Gran Obra</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ESCUELAS -->
     <div class="escuelas-section">
       <h3>🏛️ Escuelas Filosóficas</h3>
+
+      <!-- APRENDIZ -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">🔰</span><div><h4>Aprendiz</h4><p>Grado Inicial</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>El Camino del Aprendiz</strong> es el primer paso en la tradición iniciática. El Aprendiz es la piedra bruta que comienza a ser tallada. Aquí se sientan las bases de todo el conocimiento posterior.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1iDmy3mxaHWaGmyzjqYhlRwgEPK5X3EFD" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
+          </div>
+          <div class="libro-card" data-libro="aprendiz1">
+            <h4>1. El pequeño vigilante</h4><p class="autor">Jose Schlosser</p>
+            <div class="resena">"Una guía esencial para el Aprendiz Masón que explora los símbolos fundamentales y el significado de la iniciación."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1iDmy3mxaHWaGmyzjqYhlRwgEPK5X3EFD" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'aprendiz1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('aprendiz1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-aprendiz1">📝 Notas guardadas.</div>
+          </div>
+        </div>
+      </div>
 
       <!-- CÁBALA -->
       <div class="escuela-acordeon">
@@ -579,98 +853,75 @@
           <div class="intro-texto">
             <p><strong>¿Qué es la Cábala?</strong> Tradición mística del judaísmo que busca comprender la naturaleza de Dios, la creación y el alma humana.</p>
             <p style="margin-top:.6rem;"><strong>El Árbol de la Vida</strong> está compuesto por <strong>diez sefirot</strong> que representan los atributos divinos.</p>
-            <p style="margin-top:.6rem;"><strong>Los Nombres de Dios</strong> son canales de energía divina: el Tetragrámaton (YHVH) y el nombre de 72 letras.</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Orden: Torá → Dion Fortune → Mario Saban → Zohar → Abulafia.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <div class="libro-card" data-libro="torah">
+          <div class="libro-card" data-libro="cabala1">
             <h4>1. La torá, el libro de la vida</h4><p class="autor">Anónimo</p>
             <div class="resena">"La Torá es el texto fundacional de la tradición judía y la base de toda la especulación cabalística."</div>
             <div class="acciones">
               <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'torah')">✓ Marcar como leído</button>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'cabala1')">✓ Marcar como leído</button>
             </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('torah', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-torah">📝 Notas guardadas.</div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('cabala1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-cabala1">📝 Notas guardadas.</div>
           </div>
-          <div class="libro-card" data-libro="fortune">
+          <div class="libro-card" data-libro="cabala2">
             <h4>2. Cabala mistica</h4><p class="autor">Dion Fortune</p>
             <div class="resena">"Dion Fortune ofrece una de las introducciones más claras y accesibles a la Cábala occidental."</div>
             <div class="acciones">
               <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'fortune')">✓ Marcar como leído</button>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'cabala2')">✓ Marcar como leído</button>
             </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('fortune', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-fortune">📝 Notas guardadas.</div>
-          </div>
-          <div class="libro-card" data-libro="saban">
-            <h4>3. El misterio de la Cábala</h4><p class="autor">Mario Saban</p>
-            <div class="resena">"Mario Saban es uno de los cabalistas más reconocidos. Ofrece una síntesis profunda de la tradición cabalística."</div>
-            <div class="acciones">
-              <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'saban')">✓ Marcar como leído</button>
-            </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('saban', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-saban">📝 Notas guardadas.</div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('cabala2', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-cabala2">📝 Notas guardadas.</div>
           </div>
         </div>
       </div>
 
-      <!-- ROSACRUCISMO -->
+      <!-- COMPAÑERO -->
       <div class="escuela-acordeon">
         <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
-          <div class="titulo"><span class="icono">🌹</span><div><h4>Rosacrucismo</h4><p>Fama Fraternitatis</p></div></div>
+          <div class="titulo"><span class="icono">⚙️</span><div><h4>Compañero Masón</h4><p>Grado Intermedio</p></div></div>
           <span class="flecha">▼</span>
         </div>
         <div class="escuela-acordeon-body">
           <div class="intro-texto">
-            <p><strong>¿Qué es el Rosacrucismo?</strong> Tradición iniciática que surgió en el siglo XVII con los manifiestos <em>Fama Fraternitatis</em> (1614) y <em>Confessio Fraternitatis</em> (1615). Su figura central es Christian Rosenkreutz (C.R.C.).</p>
-            <p style="margin-top:.6rem;"><strong>Principios:</strong> Combina misticismo cristiano, alquimia, Cábala y hermetismo en una síntesis que busca la transformación interior.</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Orden: Heindel → Concepto Rosacruz → Castelot.</p>
+            <p><strong>El Compañero</strong> es quien ha demostrado constancia en el trabajo interior. Este grado profundiza en los símbolos del oficio y la construcción espiritual.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1Xdc8sC_ehpWgw-fjSZk6FBKo4adAnly2" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <div class="libro-card" data-libro="heindel1">
-            <h4>1. Cristianismo Rosacruz</h4><p class="autor">Max Heindel</p>
-            <div class="resena">"Max Heindel presenta la cosmovisión rosacruz desde una perspectiva cristiana esotérica, explorando la naturaleza del hombre y el cosmos."</div>
+          <div class="libro-card" data-libro="companero1">
+            <h4>1. Diccionario de los Símbolos</h4><p class="autor">Jean Chevalier, Alain Gheerbrant</p>
+            <div class="resena">"Una obra monumental que explora el significado de los símbolos a través de las culturas y las épocas."</div>
             <div class="acciones">
-              <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'heindel1')">✓ Marcar como leído</button>
+              <a href="https://drive.google.com/drive/folders/1Xdc8sC_ehpWgw-fjSZk6FBKo4adAnly2" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'companero1')">✓ Marcar como leído</button>
             </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('heindel1', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-heindel1">📝 Notas guardadas.</div>
-          </div>
-          <div class="libro-card" data-libro="concepto">
-            <h4>2. Concepto Rosacruz Del Cosmos</h4><p class="autor">Max Heindel</p>
-            <div class="resena">"Expone la estructura del universo según la tradición rosacruz: la jerarquía de los mundos, los ángeles y los espíritus de la naturaleza."</div>
-            <div class="acciones">
-              <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'concepto')">✓ Marcar como leído</button>
-            </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('concepto', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-concepto">📝 Notas guardadas.</div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('companero1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-companero1">📝 Notas guardadas.</div>
           </div>
         </div>
       </div>
 
-      <!-- INSTRUCCIÓN MASÓNICA -->
+      <!-- MAESTRO -->
       <div class="escuela-acordeon">
         <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
-          <div class="titulo"><span class="icono">🔺</span><div><h4>Instrucción Masónica</h4><p>Rito Escocés</p></div></div>
+          <div class="titulo"><span class="icono">🔺</span><div><h4>Maestro Masón</h4><p>Grado Superior</p></div></div>
           <span class="flecha">▼</span>
         </div>
         <div class="escuela-acordeon-body">
           <div class="intro-texto">
-            <p><strong>¿Qué es la Instrucción Masónica?</strong> La Francmasonería, especialmente el Rito Escocés Antiguo y Aceptado (REAA), preserva una parte fundamental del linaje templario.</p>
-            <p style="margin-top:.6rem;"><strong>Grados templarios:</strong> El <strong>Grado 18° (Caballero Rosa Cruz)</strong>, el <strong>Grado 30° (Caballero Kadosh)</strong> y el <strong>Grado 32° (Príncipe del Real Secreto)</strong> guardan relación directa con el Temple.</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Lectura fundamental: El libro de la Orden de Caballeros del Templo del Sur.</p>
+            <p><strong>El Maestro</strong> ha completado el ciclo fundamental de la iniciación. Este grado revela los misterios más profundos de la tradición constructiva.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1M1XT_yeYPb6QoNyPo_KupwJKNR-LzBso" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <div class="libro-card" data-libro="octs">
-            <h4>📖 El Linaje Eterno del Temple</h4><p class="autor">Orden de Caballeros del Templo del Sur</p>
-            <div class="resena">"Este libro es la presentación oficial de la Orden. Contiene la historia documentada del Temple, el Pergamino de Chinón, las cinco vías de supervivencia del linaje y la misión de la OCTS."</div>
+          <div class="libro-card" data-libro="maestro1">
+            <h4>1. Moral y Dogma</h4><p class="autor">Albert Pike</p>
+            <div class="resena">"La obra fundamental del Rito Escocés. Albert Pike explora los símbolos, la filosofía y la ética de la masonería."</div>
             <div class="acciones">
-              <a href="https://drive.google.com/file/d/1pr_Laxw0RQvxub6063KzFmrtExvotman/view?usp=drive_link" target="_blank" class="btn-leer">📖 Leer el Libro</a>
-              <button class="btn-progreso" onclick="marcarLeido(this, 'octs')">✓ Marcar como leído</button>
+              <a href="https://drive.google.com/drive/folders/1M1XT_yeYPb6QoNyPo_KupwJKNR-LzBso" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'maestro1')">✓ Marcar como leído</button>
             </div>
-            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('octs', this.value)"></textarea>
-            <div class="notas-guardadas" id="notas-octs">📝 Notas guardadas.</div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('maestro1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-maestro1">📝 Notas guardadas.</div>
           </div>
         </div>
       </div>
@@ -685,9 +936,43 @@
           <div class="intro-texto">
             <p><strong>¿Qué es el Hermetismo?</strong> Tradición filosófica atribuida a Hermes Trismegisto. El <em>Corpus Hermeticum</em> (siglos I-III d.C.) influyó profundamente en el Renacimiento.</p>
             <p style="margin-top:.6rem;"><strong>Principio fundamental:</strong> "Como es arriba, es abajo; como es abajo, es arriba" — la Tabla de Esmeralda.</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Próximamente: El Kybalion, el Asclepius.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1LXBkWLRS9ZoylobNGS1F_gHfrtfx2sE-" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <p style="color:var(--crema-d);text-align:center;padding:1.5rem 0;">📚 Esta sección se está construyendo.</p>
+          <div class="libro-card" data-libro="hermes1">
+            <h4>1. Corpus Hermeticum</h4><p class="autor">Hermes Trismegisto</p>
+            <div class="resena">"El texto fundamental del hermetismo, que presenta una cosmovisión donde el hombre es un microcosmos que refleja el universo."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1LXBkWLRS9ZoylobNGS1F_gHfrtfx2sE-" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'hermes1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('hermes1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-hermes1">📝 Notas guardadas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRADOS FILOSÓFICOS -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">⬡</span><div><h4>Grados Filosóficos</h4><p>REAA · 4° al 33°</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>Los Grados Filosóficos</strong> del Rito Escocés Antiguo y Aceptado (REAA) constituyen la culminación del camino iniciático masónico. Incluyen los grados 4° al 33°.</p>
+            <p style="margin-top:.6rem;"><strong>Grados templarios:</strong> El <strong>Grado 18° (Caballero Rosa Cruz)</strong>, el <strong>Grado 30° (Caballero Kadosh)</strong> y el <strong>Grado 32° (Príncipe del Real Secreto)</strong> guardan relación directa con el Temple.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/124txq23V4Qo234ot-_IdkfcLUVVSTYfY" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
+          </div>
+          <div class="libro-card" data-libro="filos1">
+            <h4>1. Simbolismo francmasónico</h4><p class="autor">Albert Mackey</p>
+            <div class="resena">"Una obra de referencia sobre los símbolos y su significado en la tradición masónica."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/124txq23V4Qo234ot-_IdkfcLUVVSTYfY" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'filos1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('filos1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-filos1">📝 Notas guardadas.</div>
+          </div>
         </div>
       </div>
 
@@ -701,32 +986,50 @@
           <div class="intro-texto">
             <p><strong>¿Qué es el Pitagorismo?</strong> Tradición fundada por Pitágoras de Samos (c. 570-495 a.C.), que concibe el número como la esencia de todas las cosas. La <strong>Tetractys</strong> es su símbolo central.</p>
             <p style="margin-top:.6rem;"><strong>Principios:</strong> La armonía de las esferas, la purificación del alma, el estudio de las matemáticas como camino espiritual.</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Próximamente: Fragmentos de Filolao, la vida de Pitágoras.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1nB1OzoCixZ34Nn4-116m7d575dC78cVk" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <p style="color:var(--crema-d);text-align:center;padding:1.5rem 0;">📚 Esta sección se está construyendo.</p>
+          <div class="libro-card" data-libro="pitagoras1">
+            <h4>1. Alma e Inmortalidad en el Pitagorismo</h4><p class="autor">Varios</p>
+            <div class="resena">"Una exploración de la doctrina pitagórica sobre el alma, su naturaleza inmortal y su trayectoria a través de las vidas."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1nB1OzoCixZ34Nn4-116m7d575dC78cVk" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'pitagoras1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('pitagoras1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-pitagoras1">📝 Notas guardadas.</div>
+          </div>
         </div>
       </div>
 
-      <!-- ALQUIMIA -->
+      <!-- ROSACRUCISMO -->
       <div class="escuela-acordeon">
         <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
-          <div class="titulo"><span class="icono">⚗️</span><div><h4>Alquimia</h4><p>Nigredo · Albedo · Rubedo</p></div></div>
+          <div class="titulo"><span class="icono">🌹</span><div><h4>Rosacrucismo</h4><p>Fama Fraternitatis</p></div></div>
           <span class="flecha">▼</span>
         </div>
         <div class="escuela-acordeon-body">
           <div class="intro-texto">
-            <p><strong>¿Qué es la Alquimia?</strong> Disciplina que combina química, filosofía y espiritualidad. Su objetivo es la <strong>Gran Obra</strong> (Opus Magnum): la transformación interior del ser humano.</p>
-            <p style="margin-top:.6rem;"><strong>Las tres etapas:</strong> <em>Nigredo</em> (putrefacción), <em>Albedo</em> (purificación) y <em>Rubedo</em> (integración).</p>
-            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Próximamente: El Rosario de los Filósofos, el Mutus Liber.</p>
+            <p><strong>¿Qué es el Rosacrucismo?</strong> Tradición iniciática que surgió en el siglo XVII con los manifiestos <em>Fama Fraternitatis</em> (1614) y <em>Confessio Fraternitatis</em> (1615).</p>
+            <p style="margin-top:.6rem;"><strong>Principios:</strong> Combina misticismo cristiano, alquimia, Cábala y hermetismo en una síntesis que busca la transformación interior.</p>
+            <p style="margin-top:.6rem; color:var(--gold-l);">✠ Carpeta de estudio: <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" style="color:var(--gold-l);">Abrir en Drive</a></p>
           </div>
-          <p style="color:var(--crema-d);text-align:center;padding:1.5rem 0;">📚 Esta sección se está construyendo.</p>
+          <div class="libro-card" data-libro="rosacruz1">
+            <h4>1. Cristianismo Rosacruz</h4><p class="autor">Max Heindel</p>
+            <div class="resena">"Max Heindel presenta la cosmovisión rosacruz desde una perspectiva cristiana esotérica."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'rosacruz1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas..." oninput="guardarNota('rosacruz1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-rosacruz1">📝 Notas guardadas.</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- DRIVE -->
+    <!-- DRIVE EMBED -->
     <div class="drive-section">
-      <h3>📁 Biblioteca · Google Drive</h3>
+      <h3>📁 Biblioteca General · Google Drive</h3>
       <iframe class="drive-iframe" src="https://drive.google.com/embeddedfolderview?id=1nxpCtcgFEODQiQOsiq7limhQzGom7hvw#grid"></iframe>
     </div>
 
@@ -813,6 +1116,17 @@ function setDatosUsuario(uid, key, value) {
   localStorage.setItem(getUsuarioKey(uid, key), JSON.stringify(value));
 }
 
+function getDatosGlobal(key, defaultValue) {
+  try {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : defaultValue;
+  } catch { return defaultValue; }
+}
+
+function setDatosGlobal(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
 // ===== ENVIAR SOLICITUD =====
 window.enviarSolicitud = function() {
   const nombre = document.getElementById('ing-nombre').value.trim();
@@ -883,6 +1197,8 @@ onAuthStateChanged(auth, (user) => {
       <button class="btn-nav btn-outline" onclick="logoutUser()" style="font-size:.55rem;padding:.3rem .6rem;">Salir</button>`;
     
     renderizarMuro();
+    renderizarNotificaciones();
+    renderizarAgenda();
     cargarProgreso(user.uid);
     renderizarRuta(user.uid);
   } else {
@@ -946,18 +1262,130 @@ window.actualizarNombreSimbolico = function() {
   renderizarMuro();
 };
 
+// ===== NOTIFICACIONES =====
+window.publicarNotificacion = function() {
+  const input = document.getElementById('input-notificacion');
+  const texto = input.value.trim();
+  if (!texto) return;
+  if (!window.currentUser) {
+    alert('Debes iniciar sesión para publicar notificaciones.');
+    return;
+  }
+  const uid = window.currentUser.uid;
+  const nombreSimbolico = getDatosUsuario(uid, 'nombre_simbolico', 'Hermano del Temple');
+  
+  const notifs = getDatosGlobal('notificaciones', []);
+  notifs.unshift({
+    id: Date.now(),
+    autor: nombreSimbolico,
+    uid: uid,
+    texto: texto,
+    fecha: new Date().toISOString()
+  });
+  setDatosGlobal('notificaciones', notifs);
+  input.value = '';
+  renderizarNotificaciones();
+};
+
+function renderizarNotificaciones() {
+  const container = document.getElementById('notificaciones-container');
+  const notifs = getDatosGlobal('notificaciones', []);
+  if (notifs.length === 0) {
+    container.innerHTML = `<p style="color:var(--crema-d);font-size:.85rem;padding:.5rem 0;">No hay notificaciones.</p>`;
+    return;
+  }
+  let html = '';
+  notifs.forEach(n => {
+    const fecha = new Date(n.fecha).toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+    html += `<div class="notif-item">
+      <span class="notif-texto">${n.texto}</span>
+      <div>
+        <span class="notif-autor">✠ ${n.autor}</span>
+        <span class="notif-fecha"> · ${fecha}</span>
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// ===== AGENDA =====
+window.agregarEvento = function() {
+  const titulo = document.getElementById('evento-titulo').value.trim();
+  const fecha = document.getElementById('evento-fecha').value.trim();
+  const desc = document.getElementById('evento-desc').value.trim();
+  if (!titulo || !fecha) {
+    alert('Completa al menos título y fecha.');
+    return;
+  }
+  if (!window.currentUser) {
+    alert('Debes iniciar sesión para agregar eventos.');
+    return;
+  }
+  const uid = window.currentUser.uid;
+  const nombreSimbolico = getDatosUsuario(uid, 'nombre_simbolico', 'Hermano del Temple');
+  
+  const eventos = getDatosGlobal('eventos', []);
+  eventos.unshift({
+    id: Date.now(),
+    titulo: titulo,
+    fecha: fecha,
+    desc: desc || 'Sin descripción',
+    autor: nombreSimbolico,
+    uid: uid,
+    creado: new Date().toISOString()
+  });
+  setDatosGlobal('eventos', eventos);
+  document.getElementById('evento-titulo').value = '';
+  document.getElementById('evento-fecha').value = '';
+  document.getElementById('evento-desc').value = '';
+  renderizarAgenda();
+};
+
+window.eliminarEvento = function(id) {
+  if (!confirm('¿Eliminar este evento?')) return;
+  let eventos = getDatosGlobal('eventos', []);
+  eventos = eventos.filter(e => e.id !== id);
+  setDatosGlobal('eventos', eventos);
+  renderizarAgenda();
+};
+
+function renderizarAgenda() {
+  const container = document.getElementById('agenda-container');
+  const eventos = getDatosGlobal('eventos', []);
+  if (eventos.length === 0) {
+    container.innerHTML = `<p style="color:var(--crema-d);font-size:.85rem;padding:.5rem 0;">No hay eventos programados.</p>`;
+    return;
+  }
+  let html = '';
+  eventos.forEach(e => {
+    html += `<div class="evento-item">
+      <div class="evento-info">
+        <div class="evento-titulo">${e.titulo}</div>
+        <div class="evento-desc">${e.desc}</div>
+        <div class="evento-fecha">📅 ${e.fecha} · ✠ ${e.autor}</div>
+      </div>
+      <div class="evento-acciones">
+        <button class="btn-evento" onclick="eliminarEvento(${e.id})">Eliminar</button>
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
 // ===== RUTA =====
 function renderizarRuta(uid) {
   const container = document.getElementById('ruta-grid');
   const leidos = getDatosUsuario(uid, 'lecturas_leidos', {});
   
   const escuelas = {
-    cabala: { icono: '🕯️', nombre: 'Cábala', desc: 'Árbol de la Vida', libros: ['torah', 'fortune', 'saban'] },
-    rosacrucismo: { icono: '🌹', nombre: 'Rosacrucismo', desc: 'Fama Fraternitatis', libros: ['heindel1', 'concepto'] },
-    masonica: { icono: '🔺', nombre: 'Masónica', desc: 'Rito Escocés', libros: ['octs'] },
-    hermetismo: { icono: '☿', nombre: 'Hermetismo', desc: 'Corpus Hermeticum', libros: [] },
-    pitagorismo: { icono: '△', nombre: 'Pitagorismo', desc: 'Tetractys', libros: [] },
-    alquimia: { icono: '⚗️', nombre: 'Alquimia', desc: 'Gran Obra', libros: [] }
+    aprendiz: { icono: '🔰', nombre: 'Aprendiz', desc: 'Grado Inicial', libros: ['aprendiz1'] },
+    cabala: { icono: '🕯️', nombre: 'Cábala', desc: 'Árbol de la Vida', libros: ['cabala1', 'cabala2'] },
+    companero: { icono: '⚙️', nombre: 'Compañero', desc: 'Grado Intermedio', libros: ['companero1'] },
+    maestro: { icono: '🔺', nombre: 'Maestro', desc: 'Grado Superior', libros: ['maestro1'] },
+    hermetismo: { icono: '☿', nombre: 'Hermetismo', desc: 'Corpus Hermeticum', libros: ['hermes1'] },
+    filosoficos: { icono: '⬡', nombre: 'Grados Fil.', desc: '4° al 33°', libros: ['filos1'] },
+    pitagorismo: { icono: '△', nombre: 'Pitagorismo', desc: 'Tetractys', libros: ['pitagoras1'] },
+    rosacrucismo: { icono: '🌹', nombre: 'Rosacrucismo', desc: 'Fama Fraternitatis', libros: ['rosacruz1'] }
   };
   
   let html = '';
@@ -987,8 +1415,9 @@ window.toggleAcordeon = function(header) {
 
 window.abrirEscuela = function(id) {
   const mapeo = {
-    'cabala': 0, 'rosacrucismo': 1, 'masonica': 2,
-    'hermetismo': 3, 'pitagorismo': 4, 'alquimia': 5
+    'aprendiz': 0, 'cabala': 1, 'companero': 2,
+    'maestro': 3, 'hermetismo': 4, 'filosoficos': 5,
+    'pitagorismo': 6, 'rosacrucismo': 7
   };
   const index = mapeo[id];
   if (index !== undefined) {
