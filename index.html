@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orden de Caballeros del Templo del Sur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1A0000;
+      color: #F5F0E8;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    :root {
+      --negro: #0D0A00;
+      --dark: #1A0000;
+      --burdeos: #5C0A0A;
+      --rojo: #7A0000;
+      --gold: #8B6914;
+      --gold-l: #C9963A;
+      --gold-xl: #E8C97A;
+      --crema: #F5F0E8;
+      --crema-d: #D4C9B0;
+      --gris: #9A9090;
+      --r: .4rem;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--negro); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(to bottom, rgba(13,10,0,.96) 0%, rgba(13,10,0,0) 100%);
+      backdrop-filter: blur(2px);
+      transition: background .4s;
+    }
+    nav.solid { background: rgba(13,10,0,.98); }
+    .nav-logo { font-family: 'Cinzel', serif; font-size: .9rem; font-weight: 600; letter-spacing: .18em; color: var(--gold-l); text-decoration: none; display: flex; align-items: center; gap: .8rem; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .15em; color: var(--crema-d); text-decoration: none; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-auth { display: flex; gap: 1rem; align-items: center; }
+    .btn-nav { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .12em; padding: .55rem 1.4rem; border-radius: var(--r); cursor: pointer; text-transform: uppercase; transition: all .3s; text-decoration: none; }
+    .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold-l); }
+    .btn-outline:hover { background: var(--gold); color: var(--negro); }
+    .btn-solid { background: var(--burdeos); border: 1px solid var(--rojo); color: var(--gold-xl); }
+    .btn-solid:hover { background: var(--rojo); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(92,10,10,.28) 0%, transparent 70%), radial-gradient(ellipse 60% 80% at 50% 100%, rgba(139,105,20,.12) 0%, transparent 60%), var(--negro); }
+    .hero-lines { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(139,105,20,.06) 60px), repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(139,105,20,.04) 60px); }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-logo-img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 30px rgba(201,150,58,.3));
+    }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .35em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.4rem; }
+    .hero-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.12; color: var(--crema); margin-bottom: 1rem; }
+    .hero-title span { color: var(--gold-l); }
+    .hero-divisa { font-size: 1.05rem; font-style: italic; color: var(--crema-d); margin-bottom: .5rem; }
+    .hero-divisa-latin { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; margin-bottom: 3rem; }
+    .hero-cta { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { font-family: 'Cinzel', serif; font-size: .8rem; letter-spacing: .15em; padding: .9rem 2.4rem; background: linear-gradient(135deg, var(--burdeos), var(--rojo)); border: 1px solid var(--gold); color: var(--gold-xl); border-radius: var(--r); cursor: pointer; text-decoration: none; text-transform: uppercase; transition: all .3s; box-shadow: 0 4px 20px rgba(92,10,10,.5); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139,105,20,.3); }
+    .btn-secondary { font-family: 'Cinzel', serif; font-size: .8rem; letter-spacing: .15em; padding: .9rem 2.4rem; background: transparent; border: 1px solid var(--gold); color: var(--gold-l); border-radius: var(--r); cursor: pointer; text-decoration: none; text-transform: uppercase; transition: all .3s; }
+    .btn-secondary:hover { background: rgba(139,105,20,.15); }
+
+    /* ===== SECCIONES PÚBLICAS ===== */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .35em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--crema); margin-bottom: 1.2rem; line-height: 1.2; }
+    .section-title em { color: var(--gold-l); font-style: normal; }
+    .section-body { color: var(--crema-d); max-width: 680px; font-size: 1.05rem; }
+    .section-body p { margin-bottom: 1rem; }
+
+    /* ===== FILOSOFÍA ===== */
+    #filosofia { background: var(--dark); }
+    .filos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .filos-card { background: linear-gradient(135deg, rgba(92,10,10,.2), rgba(13,10,0,.8)); border: 1px solid rgba(139,105,20,.3); border-radius: .6rem; padding: 2rem; transition: all .3s; opacity: 0; transform: translateY(24px); }
+    .filos-card.visible { opacity: 1; transform: translateY(0); }
+    .filos-card:hover { border-color: var(--gold); background: linear-gradient(135deg, rgba(92,10,10,.35), rgba(13,10,0,.9)); transform: translateY(-4px); }
+    .filos-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .filos-card h3 { font-family: 'Cinzel', serif; font-size: .88rem; letter-spacing: .12em; color: var(--gold-l); text-transform: uppercase; margin-bottom: .8rem; }
+    .filos-card p { font-size: .95rem; color: var(--crema-d); line-height: 1.6; }
+
+    /* ===== ORACIÓN ===== */
+    #oracion { background: var(--burdeos); position: relative; overflow: hidden; }
+    #oracion::before {
+      content: "✠"; position: absolute;
+      font-size: 28rem; color: rgba(0,0,0,.15);
+      right: -4rem; top: 50%; transform: translateY(-50%);
+      font-family: serif; line-height: 1;
+    }
+    .oracion-content { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; }
+    .oracion-text {
+      font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 400; font-style: italic; line-height: 1.7;
+      color: var(--gold-xl); margin-bottom: 1.5rem;
+    }
+    .oracion-ref { font-size: .9rem; color: rgba(232,201,122,.7); letter-spacing: .1em; }
+
+    /* ===== DECÁLOGO ===== */
+    #decalogo { background: var(--negro); }
+    .dec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 3rem; }
+    .dec-item { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.3rem 1.5rem; background: rgba(255,255,255,.02); border: 1px solid rgba(139,105,20,.2); border-radius: var(--r); transition: all .3s; opacity: 0; transform: translateY(16px); }
+    .dec-item.visible { opacity: 1; transform: translateY(0); }
+    .dec-item:hover { border-color: rgba(139,105,20,.6); background: rgba(139,105,20,.07); }
+    .dec-num { font-family: 'Cinzel', serif; font-size: .75rem; color: var(--gold); font-weight: 700; letter-spacing: .1em; min-width: 32px; }
+    .dec-item h4 { font-family: 'Cinzel', serif; font-size: .82rem; color: var(--gold-l); letter-spacing: .08em; margin-bottom: .3rem; }
+    .dec-item p { font-size: .9rem; color: var(--crema-d); line-height: 1.5; }
+
+    /* ===== LINAJE ===== */
+    #linaje { background: var(--dark); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+    .tl-item {
+      position: relative; padding: 0 0 3rem 3rem;
+      opacity: 0; transform: translateX(20px);
+      transition: opacity .6s, transform .6s;
+    }
+    .tl-item.visible { opacity: 1; transform: translateX(0); }
+    .tl-dot {
+      position: absolute; left: -5px; top: .3rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gold); border: 2px solid var(--dark);
+    }
+    .tl-year {
+      font-family: 'Cinzel', serif; font-size: .72rem;
+      letter-spacing: .2em; color: var(--gold); text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .tl-item h4 {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      color: var(--crema); margin-bottom: .4rem;
+    }
+    .tl-item p { font-size: .95rem; color: var(--crema-d); line-height: 1.6; }
+
+    /* ===== FORMULARIO DE INGRESO ===== */
+    #ingreso {
+      background: var(--burdeos);
+      background: linear-gradient(135deg, var(--burdeos) 0%, var(--dark) 100%);
+    }
+    .ing-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .ing-form {
+      background: rgba(13,10,0,.9);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: .8rem;
+      padding: 2.5rem;
+    }
+    .ing-form h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold-l);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .ing-form .form-group {
+      margin-bottom: 1.3rem;
+    }
+    .ing-form .form-group label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .ing-form .form-group input,
+    .ing-form .form-group select,
+    .ing-form .form-group textarea {
+      width: 100%;
+      padding: .8rem 1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      transition: border-color .3s;
+    }
+    .ing-form .form-group input:focus,
+    .ing-form .form-group select:focus,
+    .ing-form .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255,255,255,.06);
+    }
+    .ing-form .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .btn-form {
+      width: 100%;
+      padding: 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: .82rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      border-radius: var(--r);
+      color: var(--gold-xl);
+      cursor: pointer;
+      transition: all .3s;
+      margin-top: .5rem;
+    }
+    .btn-form:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(139,105,20,.3);
+    }
+    .msg-error { color: #ff6b6b; font-size: .88rem; text-align: center; margin-top: .8rem; }
+    .msg-success { color: #6bffb8; font-size: .88rem; text-align: center; margin-top: .8rem; }
+    .ing-texto {
+      color: var(--crema-d);
+    }
+    .ing-texto strong {
+      color: var(--gold-l);
+    }
+    .cross-sep {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .cross-glyph { font-size: 1.4rem; color: var(--gold); }
+    .cross-line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+    /* ===== PANEL USUARIO ===== */
+    #user-panel {
+      display: none; position: fixed; inset: 0; z-index: 3000;
+      background: var(--negro); overflow-y: auto;
+    }
+    .panel-header {
+      background: linear-gradient(to right, var(--burdeos), var(--dark));
+      padding: 1.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(139,105,20,.3);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .panel-header-logo { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .12em; color: var(--gold-l); }
+    .panel-header-user { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .panel-header-user span { font-size: .9rem; color: var(--crema-d); }
+    .btn-logout { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .12em; padding: .4rem 1rem; background: transparent; border: 1px solid rgba(139,105,20,.5); color: var(--gold); border-radius: var(--r); cursor: pointer; text-transform: uppercase; transition: all .3s; }
+    .btn-logout:hover { background: rgba(92,10,10,.4); }
+    .panel-body { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+    /* ===== PERFIL DE USUARIO ===== */
+    .perfil-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .perfil-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      background: rgba(139,105,20,.15);
+      flex-shrink: 0;
+    }
+    .perfil-info {
+      flex: 1;
+      min-width: 200px;
+    }
+    .perfil-info h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: 1.2rem;
+      margin-bottom: .3rem;
+    }
+    .perfil-info .nombre-real {
+      color: var(--crema-d);
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+    .perfil-info .grado {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .perfil-info .fechas {
+      color: var(--gris);
+      font-size: .85rem;
+    }
+    .perfil-nombre-simbolico {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: .5rem;
+    }
+    .perfil-nombre-simbolico input {
+      padding: .5rem .8rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: .95rem;
+      min-width: 180px;
+    }
+    .perfil-nombre-simbolico input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .perfil-nombre-simbolico button {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      padding: .4rem 1.2rem;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      color: var(--gold-xl);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+    }
+    .perfil-nombre-simbolico button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139,105,20,.3);
+    }
+    .perfil-nombre-simbolico .nombre-actual {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-xl);
+      font-size: 1.1rem;
+    }
+
+    /* ===== RUTA DE ESTUDIO ===== */
+    .ruta-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .ruta-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      margin-bottom: 1rem;
+      letter-spacing: .1em;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .ruta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+    .ruta-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      padding: 1.2rem;
+      text-align: center;
+      transition: all .3s;
+      cursor: pointer;
+    }
+    .ruta-item:hover {
+      border-color: var(--gold);
+      background: rgba(139,105,20,.08);
+      transform: translateY(-4px);
+    }
+    .ruta-item .icono { font-size: 2rem; margin-bottom: .5rem; }
+    .ruta-item h4 {
+      font-family: 'Cinzel', serif;
+      font-size: .8rem;
+      color: var(--gold-l);
+      letter-spacing: .08em;
+      margin-bottom: .2rem;
+    }
+    .ruta-item p {
+      font-size: .8rem;
+      color: var(--crema-d);
+    }
+    .ruta-item .progreso {
+      margin-top: .8rem;
+      height: 4px;
+      background: rgba(255,255,255,.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ruta-item .progreso-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-xl));
+      border-radius: 2px;
+      transition: width .6s;
+    }
+    .ruta-item.completada {
+      border-color: var(--gold);
+      background: rgba(139,105,20,.12);
+    }
+
+    /* ===== ESCUELAS FILOSÓFICAS ===== */
+    .escuelas-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .escuelas-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      margin-bottom: 1.5rem;
+      letter-spacing: .1em;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .escuela-acordeon {
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .escuela-acordeon:hover {
+      border-color: rgba(139,105,20,.5);
+    }
+    .escuela-acordeon-header {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,.03);
+      transition: background .3s;
+    }
+    .escuela-acordeon-header:hover {
+      background: rgba(139,105,20,.08);
+    }
+    .escuela-acordeon-header .titulo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .escuela-acordeon-header .titulo .icono { font-size: 1.8rem; }
+    .escuela-acordeon-header .titulo h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: .95rem;
+      letter-spacing: .08em;
+    }
+    .escuela-acordeon-header .titulo p {
+      font-size: .85rem;
+      color: var(--crema-d);
+    }
+    .escuela-acordeon-header .flecha {
+      font-size: 1.2rem;
+      color: var(--gold);
+      transition: transform .3s;
+    }
+    .escuela-acordeon-header .flecha.abierto {
+      transform: rotate(180deg);
+    }
+    .escuela-acordeon-body {
+      padding: 0 1.5rem 1.5rem;
+      display: none;
+    }
+    .escuela-acordeon-body.abierto {
+      display: block;
+    }
+    .escuela-acordeon-body .intro-texto {
+      color: var(--crema-d);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+    .escuela-acordeon-body .intro-texto strong {
+      color: var(--gold-l);
+    }
+
+    /* ===== LIBRO CARD ===== */
+    .libro-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all .3s;
+    }
+    .libro-card:hover {
+      border-color: rgba(139,105,20,.5);
+    }
+    .libro-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      font-size: 1rem;
+      margin-bottom: .2rem;
+    }
+    .libro-card .autor {
+      color: var(--crema-d);
+      font-size: .9rem;
+      margin-bottom: .8rem;
+    }
+    .libro-card .resena {
+      color: var(--crema);
+      font-size: .95rem;
+      background: rgba(139,105,20,.08);
+      padding: .8rem 1rem;
+      border-radius: var(--r);
+      border-left: 2px solid var(--gold);
+      margin-bottom: 1rem;
+    }
+    .libro-card .acciones {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .8rem;
+    }
+    .btn-leer {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      padding: .5rem 1.2rem;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      color: var(--gold-xl);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all .3s;
+      display: inline-block;
+    }
+    .btn-leer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139,105,20,.3);
+    }
+    .btn-progreso {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      padding: .5rem 1.2rem;
+      background: transparent;
+      border: 1px solid rgba(139,105,20,.5);
+      color: var(--gold);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+    }
+    .btn-progreso:hover {
+      background: rgba(139,105,20,.15);
+    }
+    .btn-progreso.leido {
+      background: rgba(139,105,20,.2);
+      border-color: var(--gold);
+      color: var(--gold-xl);
+    }
+    .libro-card textarea {
+      width: 100%;
+      padding: .6rem .8rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: .9rem;
+      resize: vertical;
+      min-height: 60px;
+      transition: border-color .3s;
+    }
+    .libro-card textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .libro-card .notas-guardadas {
+      font-size: .8rem;
+      color: var(--gris);
+      margin-top: .3rem;
+      display: none;
+    }
+    .libro-card .notas-guardadas.visible {
+      display: block;
+    }
+
+    /* ===== DRIVE EMBED ===== */
+    .drive-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .drive-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      margin-bottom: 1rem;
+      letter-spacing: .1em;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .drive-iframe {
+      width: 100%;
+      height: 480px;
+      border: 1px solid rgba(139,105,20,.3);
+      border-radius: .4rem;
+      background: var(--dark);
+    }
+
+    /* ===== MURO ===== */
+    .muro-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: .8rem;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .muro-section h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-l);
+      margin-bottom: 1.5rem;
+      letter-spacing: .1em;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .muro-nueva-pregunta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .muro-nueva-pregunta input {
+      flex: 1;
+      min-width: 200px;
+      padding: .8rem 1rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(139,105,20,.35);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      transition: border-color .3s;
+    }
+    .muro-nueva-pregunta input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .muro-nueva-pregunta button {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      padding: .6rem 1.8rem;
+      background: linear-gradient(135deg, var(--burdeos), var(--rojo));
+      border: 1px solid var(--gold);
+      color: var(--gold-xl);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+    .muro-nueva-pregunta button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139,105,20,.3);
+    }
+    .pregunta-item {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.2);
+      border-radius: .6rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all .3s;
+    }
+    .pregunta-item:hover {
+      border-color: rgba(139,105,20,.5);
+    }
+    .pregunta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .5rem;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .pregunta-autor {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: var(--gold-l);
+    }
+    .pregunta-fecha {
+      font-size: .8rem;
+      color: var(--gris);
+    }
+    .pregunta-texto {
+      font-size: 1.05rem;
+      color: var(--crema);
+      margin-bottom: .8rem;
+    }
+    .pregunta-respuestas {
+      margin-top: 1.2rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(139,105,20,.3);
+    }
+    .respuesta-item {
+      padding: .8rem 0;
+      border-bottom: 1px solid rgba(139,105,20,.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .respuesta-item:last-child { border-bottom: none; }
+    .respuesta-autor {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      color: var(--gold);
+      min-width: 100px;
+    }
+    .respuesta-texto {
+      flex: 1;
+      color: var(--crema-d);
+    }
+    .respuesta-fecha {
+      font-size: .7rem;
+      color: var(--gris);
+      white-space: nowrap;
+    }
+    .nueva-respuesta {
+      display: flex;
+      gap: .8rem;
+      margin-top: .8rem;
+      flex-wrap: wrap;
+    }
+    .nueva-respuesta input {
+      flex: 1;
+      min-width: 150px;
+      padding: .6rem .8rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(139,105,20,.25);
+      border-radius: var(--r);
+      color: var(--crema);
+      font-family: 'Crimson Pro', serif;
+      font-size: .95rem;
+    }
+    .nueva-respuesta input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .nueva-respuesta button {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      padding: .4rem 1.2rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold-l);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .3s;
+    }
+    .nueva-respuesta button:hover {
+      background: rgba(139,105,20,.15);
+    }
+
+    /* ===== MODAL AUTH (solo LOGIN) ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--negro); border: 1px solid rgba(139,105,20,.4);
+      border-radius: .8rem; padding: 3rem;
+      width: 100%; max-width: 480px;
+      transform: translateY(20px); transition: transform .3s;
+      position: relative; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; color: var(--crema-d); font-size: 1.4rem; cursor: pointer; line-height: 1; }
+    .modal-logo { text-align: center; margin-bottom: 2rem; }
+    .modal-logo span { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); }
+    .modal-title { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--crema); text-align: center; margin-bottom: .4rem; }
+    .modal-sub { font-size: .92rem; color: var(--crema-d); text-align: center; margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1.3rem; }
+    .form-group label { display: block; font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .15em; color: var(--gold); text-transform: uppercase; margin-bottom: .5rem; }
+    .form-group input { width: 100%; padding: .8rem 1rem; background: rgba(255,255,255,.04); border: 1px solid rgba(139,105,20,.35); border-radius: var(--r); color: var(--crema); font-family: 'Crimson Pro', serif; font-size: 1rem; transition: border-color .3s; }
+    .form-group input:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,.06); }
+    .form-group input::placeholder { color: var(--gris); }
+    .btn-form { width: 100%; padding: 1rem; font-family: 'Cinzel', serif; font-size: .82rem; letter-spacing: .15em; text-transform: uppercase; background: linear-gradient(135deg, var(--burdeos), var(--rojo)); border: 1px solid var(--gold); border-radius: var(--r); color: var(--gold-xl); cursor: pointer; transition: all .3s; margin-top: .5rem; }
+    .btn-form:hover { opacity: .9; transform: translateY(-1px); }
+    .msg-error { color: #ff6b6b; font-size: .88rem; text-align: center; margin-top: .8rem; }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--negro);
+      border-top: 1px solid rgba(139,105,20,.2);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-cross { font-size: 2.5rem; color: var(--burdeos); margin-bottom: 1rem; }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: .2em; color: var(--crema); margin-bottom: .5rem; }
+    .footer-latin { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .25em; color: var(--gold); margin-bottom: 1.5rem; }
+    .footer-divisa { font-style: italic; color: var(--crema-d); font-size: .95rem; margin-bottom: 2rem; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .footer-links a { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .15em; color: var(--crema-d); text-decoration: none; text-transform: uppercase; transition: color .3s; }
+    .footer-links a:hover { color: var(--gold-l); }
+    .footer-copy { font-size: .82rem; color: var(--gris); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .ing-container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .panel-header { padding: 1rem 1.2rem; }
+      .panel-body { padding: 1.5rem 1rem; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.2rem; }
+      .modal { padding: 2rem 1.5rem; margin: 1rem; }
+      .drive-iframe { height: 280px; }
+      .hero-logo-img { max-width: 120px; }
+      .perfil-section { flex-direction: column; text-align: center; }
+      .footer-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero"><span style="font-size:1.5rem;color:var(--burdeos);">✠</span> OCTS</a>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#decalogo">Decálogo</a></li>
+    <li><a href="#linaje">Linaje</a></li>
+    <li><a href="#oracion">Oración</a></li>
+    <li><a href="#ingreso">Ingreso</a></li>
+  </ul>
+  <div class="nav-auth" id="nav-auth">
+    <a class="btn-nav btn-outline" onclick="openModal()">Ingresar</a>
+    <a class="btn-nav btn-solid" href="#ingreso">Solicitar Ingreso</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <img class="hero-logo-img" src="logoocts.png" alt="Escudo de la Orden del Temple del Sur" onerror="this.style.display='none'">
+    <div class="hero-eyebrow">Ordo Militiae Templi Australis · Anno Domini MMXXV</div>
+    <h1 class="hero-title">Orden de Caballeros<br><span>del Templo del Sur</span></h1>
+    <p class="hero-divisa">«Por el mérito del linaje de la Orden de los Caballeros del Templo del Sur, concédenos gracia y gloria.»</p>
+    <p class="hero-divisa-latin">Non nobis, Domine, non nobis, sed Nomini Tuo da gloriam · Salmo 115:1</p>
+    <div class="hero-cta">
+      <a href="#ingreso" class="btn-secondary">Solicitar Ingreso</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILOSOFÍA ===== -->
+<section id="filosofia">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Principios</span>
+      <h2 class="section-title">La <em>Filosofía</em> de la Orden</h2>
+      <p class="section-body">La OCTS es una escuela de formación interior, una vía ética y filosófica, una tradición simbólica y un camino de disciplina moral.</p>
+    </div>
+    <div class="filos-grid">
+      <div class="filos-card reveal"><div class="filos-icon">⬡</div><h3>La Piedra Bruta</h3><p>Todo hombre llega al mundo como piedra bruta. El trabajo iniciático es el proceso de pulirla hasta que ocupe su lugar en el edificio del bien común.</p></div>
+      <div class="filos-card reveal"><div class="filos-icon">▲</div><h3>Las Tres Luces</h3><p>Sabiduría, Fortaleza y Belleza: el modelo filosófico completo de la excelencia humana.</p></div>
+      <div class="filos-card reveal"><div class="filos-icon">◉</div><h3>La Venda y la Luz</h3><p>La iniciación comienza reconociendo la propia ignorancia. La venda obliga a encontrarse con la oscuridad antes de ver la luz.</p></div>
+      <div class="filos-card reveal"><div class="filos-icon">⊕</div><h3>La Palabra como Acto</h3><p>El juramento sobre el Ara crea una nueva realidad moral. El hombre de palabra sostiene sus compromisos cuando nadie observa.</p></div>
+      <div class="filos-card reveal"><div class="filos-icon">○</div><h3>El Silencio</h3><p>El primer trabajo del iniciado: aprender a callar lo que no vale la pena decir, a escuchar antes de responder.</p></div>
+      <div class="filos-card reveal"><div class="filos-icon">◈</div><h3>El Servicio</h3><p>La prueba de madurez iniciática. El Caballero sirve porque es lo correcto, independientemente de si alguien lo nota.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ORACIÓN ===== -->
+<section id="oracion">
+  <div class="oracion-content">
+    <span class="section-label" style="color:var(--gold-xl);">Oración de la Orden</span>
+    <p class="oracion-text">
+      «Por el mérito del linaje de la Orden<br>
+      de los Caballeros del Templo del Sur,<br>
+      concédenos gracia y gloria.»
+    </p>
+    <p class="oracion-ref">Se pronuncia al abrir y cerrar cada tenida ritual · In Nomine Crucis</p>
+  </div>
+</section>
+
+<!-- ===== DECÁLOGO ===== -->
+<section id="decalogo">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Los Diez Principios</span>
+      <h2 class="section-title">El Decálogo del <em>Caballero</em></h2>
+    </div>
+    <div class="dec-grid">
+      <div class="dec-item reveal"><span class="dec-num">I</span><div><h4>Del Honor</h4><p>El Caballero sostiene su palabra como ley.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">II</span><div><h4>Del Servicio</h4><p>Toda acción está orientada al bien común.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">III</span><div><h4>De la Disciplina</h4><p>El dominio de sí mismo precede al dominio de cualquier circunstancia.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">IV</span><div><h4>De la Verdad</h4><p>Busca la verdad aun cuando esta lo incomode.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">V</span><div><h4>De la Lealtad</h4><p>Permanece firme a sus principios, a su palabra y a su hermandad.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">VI</span><div><h4>Del Silencio</h4><p>Guarda silencio sobre aquello que debe ser resguardado.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">VII</span><div><h4>De la Fortaleza</h4><p>No rehúye el dolor ni la adversidad; los enfrenta como pruebas.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">VIII</span><div><h4>De la Fe</h4><p>Cree en un principio superior que guía su camino.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">IX</span><div><h4>De la Justicia</h4><p>Actúa con rectitud, siendo justo incluso cuando nadie lo observa.</p></div></div>
+      <div class="dec-item reveal"><span class="dec-num">X</span><div><h4>De la Trascendencia</h4><p>Comprende que su vida es parte de una obra mayor.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LINAJE ===== -->
+<section id="linaje">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Historia</span>
+      <h2 class="section-title">El Linaje que <em>Sobrevivió</em></h2>
+      <p class="section-body">La supresión de 1312 no extinguió el Temple: lo dispersó. Como el fuego que parece extinguirse cuando se golpea la brasa pero que en realidad dispersa las chispas en múltiples direcciones, el Temple sobrevivió a la persecución de Felipe IV a través de cinco vías históricamente documentadas.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1118</div><h4>Fundación del Temple en Jerusalén</h4><p>Hugo de Payns y ocho compañeros se presentan ante el rey Balduino II. Reciben el ala del palacio real construida sobre los cimientos del Templo de Salomón. Nace la Orden de los Pobres Caballeros de Cristo.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1128</div><h4>Concilio de Troyes · La Regla de Bernardo</h4><p>El abad Bernardo de Claraval redacta la Regla de la Orden. El Concilio reconoce oficialmente a los Templarios. San Bernardo escribe De Laude Novae Militiae, el elogio teológico de la nueva milicia.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1139</div><h4>Bula Omne Datum Optimum</h4><p>El papa Inocencio II concede al Temple la soberanía eclesiástica sin precedentes: exención de diezmos, jurisdicción propia y dependencia exclusiva de la Santa Sede. El Temple se convierte en un estado paralelo.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1307</div><h4>Viernes 13 · La Persecución de Felipe IV</h4><p>El rey de Francia ordena el arresto simultáneo de todos los Templarios en el reino. Las confesiones se obtienen bajo tortura. El proceso de París es una farsa jurídica orquestada por el poder real.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1308</div><h4>El Pergamino de Chinón · La Absolución Papal</h4><p>El papa Clemente V envía tres cardenales al castillo de Chinón para interrogar a los líderes templarios. Los absuelven de los cargos de herejía. El documento permanecerá en los Archivos Vaticanos durante setecientos años.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1312</div><h4>Bula Vox in Excelso · Supresión Política</h4><p>Clemente V suprime la Orden no por herejía sino por el escándalo que su continuación causaba y por presión de Felipe IV. Los bienes templarios se transfieren a los Hospitalarios.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1314</div><h4>Jacques de Molay · El Último Testimonio</h4><p>El Gran Maestre es quemado vivo frente a Notre Dame. Sus últimas palabras: "Declaro que la Orden es inocente. Muero inocente." Su testimonio se convierte en el acta de fe del Temple para la posteridad.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1319</div><h4>Portugal · La Orden de Cristo</h4><p>El rey Don Dinis I funda la Orden de Cristo como sucesora legal del Temple en Portugal. Los Caballeros mantienen el manto blanco, los conocimientos náuticos y el espíritu expansivo de sus predecesores. La Cruz de Cristo ondeó en las velas de las carabelas que descubrieron Brasil en 1500.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1317</div><h4>Aragón · La Orden de Montesa</h4><p>Jaime II funda la Orden de Montesa con los Templarios aragoneses, absueltos por los concilios de Tarragona y Zaragoza. Mantienen la tradición militar templaria en el Reino de Valencia.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">1310</div><h4>Alemania · La Absolución de Maqancia</h4><p>Los Templarios alemanes comparecen en plena armadura ante el tribunal eclesiástico. Exigen ser juzgados. El tribunal los declara inocentes. No hay condena en tierras germanas.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">c. 1398</div><h4>Escocia · Henry Sinclair y Rosslyn</h4><p>La familia Sinclair, custodios del linaje templario, realiza una expedición transatlántica hacia el noroeste. La Capilla de Rosslyn, construida en 1456, conserva tallas de plantas americanas —maíz y aloe vera— que no eran conocidas en Europa en esa fecha.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">Siglo XVIII</div><h4>La Masonería Escocesa · La Quinta Vía</h4><p>La Orden de Caballeros del Templo del Sur reconoce explícitamente a la Masonería escocesa de grados filosóficos como una de las vías legítimas de preservación y transmisión del linaje templario. El Rito Escocés Antiguo y Aceptado (REAA) asimiló el simbolismo templario en sus grados filosóficos, especialmente en el <strong>Grado 18° (Caballero Rosa Cruz)</strong>, que evoca la espiritualidad del monje-guerrero; el <strong>Grado 30° (Caballero Kadosh)</strong>, que rememora la supresión del Temple y la ejecución de Jacques de Molay; y el <strong>Grado 32° (Sublime Príncipe del Real Secreto)</strong>, que enseña que la verdadera rehabilitación del Temple es la perseverancia en la virtud.</p>
+      <p style="margin-top:.8rem; color:var(--gold-l);">«El Temple no eligió un solo heredero. Sembró en muchos surcos: Portugal, Aragón, Escocia, la Masonería. Cada uno preservó algo distinto del mismo fuego. La OCTS no compite con ninguno: recoge todas las brasas que puede y las pone juntas.»</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">2007</div><h4>El Vaticano Publica el Pergamino de Chinón</h4><p>El descubrimiento de Barbara Frale en 2001 culmina con la publicación oficial del proceso. La verdad que Molay proclamó en la hoguera es reconocida por la institución que lo condenó.</p></div>
+      <div class="tl-item reveal"><div class="tl-dot"></div><div class="tl-year">MMXXV</div><h4>La Orden de Caballeros del Templo del Sur</h4><p>Se constituye en el Cono Sur de América como heredera reivindicativa del linaje —no de sus castillos ni sus riquezas, sino del fuego que ninguna hoguera pudo apagar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMULARIO DE INGRESO ===== -->
+<section id="ingreso">
+  <div class="container">
+    <div class="ing-container">
+      <div class="reveal">
+        <span class="section-label" style="color:var(--gold-xl);">Solicitud de Ingreso</span>
+        <h2 class="section-title">El Umbral <em>te Espera</em></h2>
+        <div class="ing-texto">
+          <p>La iniciación no comienza cuando cruzas el umbral del Temple. Comienza cuando decides que el camino hacia ese umbral merece ser recorrido con intención, con honestidad y con disposición real al cambio.</p>
+          <p style="margin-top:.8rem;"><strong>Si un hermano te ha invitado, recuerda: si eres consistente con los juramentos de la Orden, hablarás bien de quien te presentó. Si no lo eres, hablarás mal de él.</strong></p>
+          <p style="margin-top:.8rem;">Completa este formulario con honestidad. No hay respuesta correcta; hay respuesta verdadera.</p>
+        </div>
+        <div class="cross-sep">
+          <div class="cross-glyph">✠</div>
+          <div class="cross-line"></div>
+        </div>
+      </div>
+      <div class="ing-form reveal">
+        <h3>Carta de Presentación</h3>
+        <div class="form-group">
+          <label>Nombre Completo</label>
+          <input type="text" id="ing-nombre" placeholder="Tu nombre completo">
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico</label>
+          <input type="email" id="ing-email" placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label>¿Quién eres? — Tu camino de vida</label>
+          <input type="text" id="ing-quien" placeholder="Profesión, vocación, contexto personal">
+        </div>
+        <div class="form-group">
+          <label>¿Qué buscas en la Orden?</label>
+          <input type="text" id="ing-busca" placeholder="Qué te trajo hasta aquí, con honestidad">
+        </div>
+        <div class="form-group">
+          <label>¿Qué quieres saber de nosotros?</label>
+          <input type="text" id="ing-saber" placeholder="Tus preguntas concretas sobre la Orden">
+        </div>
+        <div class="form-group">
+          <label>¿Has participado en otras órdenes iniciáticas?</label>
+          <select id="ing-ordenes">
+            <option value="no">No he participado en ninguna</option>
+            <option value="si-masoneria">Sí — Masonería</option>
+            <option value="si-martinismo">Sí — Martinismo</option>
+            <option value="si-rosacruces">Sí — Rosacrucismo (AMORC u otras)</option>
+            <option value="si-otra">Sí — Otra orden (especificar abajo)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>¿Cuáles? (si corresponde)</label>
+          <input type="text" id="ing-ordenes-cuales" placeholder="Nombre de la/s orden/es, grado alcanzado">
+        </div>
+        <div class="form-group">
+          <label>Hermano que te presenta (si aplica)</label>
+          <input type="text" id="ing-hermano" placeholder="Nombre del Caballero que te invitó">
+        </div>
+        <div class="form-group">
+          <label>Mensaje adicional</label>
+          <textarea id="ing-mensaje" placeholder="Algo más que quieras compartir con la Orden..."></textarea>
+        </div>
+        <button class="btn-form" onclick="enviarSolicitud()">Enviar Carta de Presentación ✠</button>
+        <p class="msg-error" id="ing-error" style="display:none"></p>
+        <p class="msg-success" id="ing-success" style="display:none"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PANEL DE USUARIO ===== -->
+<div id="user-panel">
+  <div class="panel-header">
+    <span class="panel-header-logo">✠ Orden de Caballeros del Templo del Sur</span>
+    <div class="panel-header-user">
+      <span id="panel-username">Hermano</span>
+      <button class="btn-logout" onclick="logoutUser()">Cerrar Sesión</button>
+    </div>
+  </div>
+  <div class="panel-body">
+
+    <!-- PERFIL -->
+    <div class="perfil-section">
+      <div class="perfil-avatar">✠</div>
+      <div class="perfil-info">
+        <h3 id="perfil-nombre-simbolico">Hermano del Temple</h3>
+        <p class="nombre-real" id="perfil-nombre-real">Nombre Real</p>
+        <p class="grado" id="perfil-grado">Aspirante</p>
+        <p class="fechas" id="perfil-fechas">Ingreso: -- · Investidura: --</p>
+        <div class="perfil-nombre-simbolico">
+          <span class="nombre-actual" id="nombre-actual-label">✠ Hermano del Temple</span>
+          <input type="text" id="input-nombre-simbolico" placeholder="Nuevo nombre simbólico...">
+          <button onclick="actualizarNombreSimbolico()">Actualizar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA DE ESTUDIO -->
+    <div class="ruta-section">
+      <h3>📜 Tu Ruta de Estudio</h3>
+      <div class="ruta-grid" id="ruta-grid"></div>
+    </div>
+
+    <!-- ESCUELAS FILOSÓFICAS -->
+    <div class="escuelas-section">
+      <h3>🏛️ Escuelas Filosóficas</h3>
+
+      <!-- CÁBALA -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">🕯️</span><div><h4>Cábala</h4><p>Árbol de la Vida · 10 sefirot</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es la Cábala?</strong> La Cábala (Qabbalah, "recepción") es la tradición mística del judaísmo que busca comprender la naturaleza de Dios, la creación y el alma humana a través del estudio de las Escrituras, la meditación en los Nombres Divinos y la exploración del Árbol de la Vida.</p>
+            <p style="margin-top:.8rem;"><strong>El Árbol de la Vida (Etz Chaim)</strong> es el mapa simbólico de la creación. Está compuesto por <strong>diez sefirot</strong> (emanaciones divinas) que representan los atributos de Dios y las etapas del despliegue del universo desde la infinitud hasta la manifestación material.</p>
+            <p style="margin-top:.8rem;"><strong>Los Nombres de Dios</strong> son, en la Cábala, más que títulos: son canales de energía divina. El Tetragrámaton (YHVH), el nombre de 72 letras y el Shem Hamphorash son herramientas de meditación y transformación espiritual.</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Orden de lectura recomendada: La Torá → Dion Fortune → Mario Saban → Zohar → Abulafia.</p>
+          </div>
+          <div class="libro-card" data-libro="torah">
+            <h4>1. La torá, el libro de la vida</h4><p class="autor">Anónimo</p>
+            <div class="resena">"La Torá es el texto fundacional de la tradición judía y la base de toda la especulación cabalística. Este libro es el punto de partida indispensable para comprender el lenguaje simbólico de la Cábala."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'torah')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('torah', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-torah">📝 Notas guardadas.</div>
+          </div>
+          <div class="libro-card" data-libro="fortune">
+            <h4>2. Cabala mistica</h4><p class="autor">Dion Fortune</p>
+            <div class="resena">"Dion Fortune ofrece una de las introducciones más claras y accesibles a la Cábala occidental. Su enfoque práctico y psicológico la convierte en una obra ideal para el estudiante moderno."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'fortune')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('fortune', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-fortune">📝 Notas guardadas.</div>
+          </div>
+          <div class="libro-card" data-libro="saban">
+            <h4>3. El misterio de la Cábala</h4><p class="autor">Mario Saban y Gorina Sánchez</p>
+            <div class="resena">"Mario Saban es uno de los cabalistas más reconocidos en el mundo hispanohablante. Esta obra ofrece una síntesis profunda y moderna de la tradición cabalística."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1pj5KvySbnNVrIKLICAir-dBp77iyyRal" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'saban')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('saban', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-saban">📝 Notas guardadas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROSACRUCISMO -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">🌹</span><div><h4>Rosacrucismo</h4><p>Fama Fraternitatis · C.R.C.</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es el Rosacrucismo?</strong> El Rosacrucismo es una tradición iniciática y filosófica que surgió en Europa a comienzos del siglo XVII con la publicación de los manifiestos <em>Fama Fraternitatis</em> (1614) y <em>Confessio Fraternitatis</em> (1615). Su figura central es Christian Rosenkreutz (C.R.C.).</p>
+            <p style="margin-top:.8rem;"><strong>Principios fundamentales:</strong> El Rosacrucismo combina el misticismo cristiano, la alquimia, la Cábala y el hermetismo en una síntesis que busca la transformación interior del individuo y la reforma del conocimiento humano.</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Orden de lectura recomendada: Heindel → Concepto Rosacruz → Castelot.</p>
+          </div>
+          <div class="libro-card" data-libro="heindel1">
+            <h4>1. Cristianismo Rosacruz</h4><p class="autor">Max Heindel</p>
+            <div class="resena">"Max Heindel es uno de los autores más importantes del Rosacrucismo moderno. Este libro presenta la cosmovisión rosacruz desde una perspectiva cristiana esotérica."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'heindel1')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('heindel1', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-heindel1">📝 Notas guardadas.</div>
+          </div>
+          <div class="libro-card" data-libro="concepto">
+            <h4>2. Concepto Rosacruz Del Cosmos</h4><p class="autor">Max Heindel</p>
+            <div class="resena">"Esta obra expone la estructura del universo según la tradición rosacruz: la jerarquía de los mundos, los ángeles, los espíritus de la naturaleza y el lugar del hombre en el plan cósmico."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/drive/folders/1z86RSPLCYvQdtNcLZanlZ3RqM99j8Fq6" target="_blank" class="btn-leer">📖 Abrir en Drive</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'concepto')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('concepto', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-concepto">📝 Notas guardadas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSTRUCCIÓN MASÓNICA -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">🔺</span><div><h4>Instrucción Masónica</h4><p>Rito Escocés · Grados Filosóficos</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es la Instrucción Masónica?</strong> La Francmasonería, especialmente en su vertiente del Rito Escocés Antiguo y Aceptado (REAA), preserva una parte fundamental del linaje templario. La OCTS reconoce en los grados filosóficos del REAA una de las vías legítimas de transmisión de la tradición iniciática templaria.</p>
+            <p style="margin-top:.8rem;"><strong>Grados templarios:</strong> El <strong>Grado 18° (Caballero Rosa Cruz)</strong>, el <strong>Grado 30° (Caballero Kadosh)</strong> y el <strong>Grado 32° (Sublime Príncipe del Real Secreto)</strong> son los que guardan una relación más directa con la memoria y el simbolismo del Temple.</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Lectura fundamental: El libro de la Orden de Caballeros del Templo del Sur.</p>
+          </div>
+          <div class="libro-card" data-libro="octs">
+            <h4>📖 El Linaje Eterno del Temple</h4><p class="autor">Orden de Caballeros del Templo del Sur</p>
+            <div class="resena">"Este libro es la presentación oficial de la Orden de Caballeros del Templo del Sur (Ordo Militiae Templi Australis). Contiene la historia documentada del Temple, la dimensión política de su caída, el descubrimiento del Pergamino de Chinón, las cinco vías de supervivencia del linaje —incluyendo la Masonería Escocesa— y la misión de la OCTS en el siglo XXI."</div>
+            <div class="acciones">
+              <a href="https://drive.google.com/file/d/1pr_Laxw0RQvxub6063KzFmrtExvotman/view?usp=drive_link" target="_blank" class="btn-leer">📖 Leer el Libro de la Orden</a>
+              <button class="btn-progreso" onclick="marcarLeido(this, 'octs')">✓ Marcar como leído</button>
+            </div>
+            <textarea placeholder="Escribe tus notas personales..." oninput="guardarNota('octs', this.value)"></textarea>
+            <div class="notas-guardadas" id="notas-octs">📝 Notas guardadas.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERMETISMO -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">☿</span><div><h4>Hermetismo</h4><p>Corpus Hermeticum</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es el Hermetismo?</strong> El Hermetismo es una tradición filosófica y espiritual atribuida a Hermes Trismegisto, una figura mítica que fusiona al dios griego Hermes con el dios egipcio Thot. Los textos del <em>Corpus Hermeticum</em> (siglos I-III d.C.) presentan una cosmovisión que influyó profundamente en el Renacimiento y en el pensamiento iniciático occidental.</p>
+            <p style="margin-top:.8rem;"><strong>Principios fundamentales:</strong> "Como es arriba, es abajo; como es abajo, es arriba" — la Tabla de Esmeralda.</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Próximamente: El Kybalion, el Asclepius, la Tabla de Esmeralda.</p>
+          </div>
+          <p style="color:var(--crema-d);text-align:center;padding:2rem 0;">📚 Esta sección se está construyendo.</p>
+        </div>
+      </div>
+
+      <!-- PITAGORISMO -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">△</span><div><h4>Pitagorismo</h4><p>Tetractys</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es el Pitagorismo?</strong> El Pitagorismo es la tradición filosófica fundada por Pitágoras de Samos (c. 570-495 a.C.), que concibe el número como la esencia de todas las cosas. La <strong>Tetractys</strong> —diez puntos en cuatro filas— es su símbolo central.</p>
+            <p style="margin-top:.8rem;"><strong>Principios fundamentales:</strong> La armonía de las esferas, la purificación del alma, la vida comunitaria, el estudio de las matemáticas como camino espiritual.</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Próximamente: Fragmentos de Filolao, la vida de Pitágoras.</p>
+          </div>
+          <p style="color:var(--crema-d);text-align:center;padding:2rem 0;">📚 Esta sección se está construyendo.</p>
+        </div>
+      </div>
+
+      <!-- ALQUIMIA -->
+      <div class="escuela-acordeon">
+        <div class="escuela-acordeon-header" onclick="toggleAcordeon(this)">
+          <div class="titulo"><span class="icono">⚗️</span><div><h4>Alquimia</h4><p>Nigredo · Albedo · Rubedo</p></div></div>
+          <span class="flecha">▼</span>
+        </div>
+        <div class="escuela-acordeon-body">
+          <div class="intro-texto">
+            <p><strong>¿Qué es la Alquimia?</strong> La Alquimia es una disciplina que combina la química primitiva con la filosofía y la espiritualidad. Su objetivo no es solo la transmutación de metales en oro, sino la transformación interior del ser humano: la <strong>Gran Obra</strong> (Opus Magnum).</p>
+            <p style="margin-top:.8rem;"><strong>Las tres etapas:</strong> <em>Nigredo</em> (putrefacción), <em>Albedo</em> (purificación) y <em>Rubedo</em> (integración).</p>
+            <p style="margin-top:.8rem; color:var(--gold-l);">✠ Próximamente: El Rosario de los Filósofos, el Mutus Liber.</p>
+          </div>
+          <p style="color:var(--crema-d);text-align:center;padding:2rem 0;">📚 Esta sección se está construyendo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRIVE EMBED -->
+    <div class="drive-section">
+      <h3>📁 Biblioteca General · Google Drive</h3>
+      <iframe class="drive-iframe" src="https://drive.google.com/embeddedfolderview?id=1nxpCtcgFEODQiQOsiq7limhQzGom7hvw#grid"></iframe>
+    </div>
+
+    <!-- MURO -->
+    <div class="muro-section">
+      <h3>🗣️ Muro del Temple · Preguntas y Respuestas</h3>
+      <div class="muro-nueva-pregunta">
+        <input type="text" id="input-pregunta" placeholder="Escribe tu pregunta para la hermandad...">
+        <button onclick="publicarPregunta()">Publicar Pregunta ✠</button>
+      </div>
+      <div id="muro-container"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL LOGIN ===== -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo"><span>✠</span></div>
+    <div id="modal-login">
+      <h2 class="modal-title">Bienvenido, Hermano</h2>
+      <p class="modal-sub">Ingresa con tus credenciales</p>
+      <div class="form-group"><label>Correo</label><input type="email" id="login-email" placeholder="tu@email.com"></div>
+      <div class="form-group"><label>Contraseña</label><input type="password" id="login-pass" placeholder="••••••••"></div>
+      <button class="btn-form" onclick="loginUser()">Entrar al Temple ✠</button>
+      <p class="msg-error" id="login-error" style="display:none"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-cross">✠</div>
+  <p class="footer-name">ORDEN DE CABALLEROS DEL TEMPLO DEL SUR</p>
+  <p class="footer-latin">ORDO MILITIAE TEMPLI AUSTRALIS</p>
+  <p class="footer-divisa">«Non nobis, Domine, non nobis, sed Nomini Tuo da gloriam»</p>
+  <div class="footer-links">
+    <a href="#filosofia">Filosofía</a>
+    <a href="#decalogo">Decálogo</a>
+    <a href="#linaje">Linaje</a>
+    <a href="#oracion">Oración</a>
+    <a href="#ingreso">Ingreso</a>
+  </div>
+  <p class="footer-copy">In Terra Australi, Lux Perennis · Anno Domini MMXXV</p>
+</footer>
+
+<!-- ===== FIREBASE + LOGICA ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDppo3qRjU8vYKrXcL2Gg1T5xnBKChTd98",
+  authDomain: "optimum-courier-263317.firebaseapp.com",
+  databaseURL: "https://optimum-courier-263317.firebaseio.com",
+  projectId: "optimum-courier-263317",
+  storageBucket: "optimum-courier-263317.firebasestorage.app",
+  messagingSenderId: "913169000664",
+  appId: "1:913169000664:web:92c1ab5b47bbc708fb8fad",
+  measurementId: "G-SMRG4DC5TH"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// ===== GLOBALES =====
+window.currentUser = null;
+
+function getUsuarioKey(uid, key) {
+  return `usuario_${uid}_${key}`;
+}
+
+function getDatosUsuario(uid, key, defaultValue) {
+  try {
+    const data = localStorage.getItem(getUsuarioKey(uid, key));
+    return data ? JSON.parse(data) : defaultValue;
+  } catch { return defaultValue; }
+}
+
+function setDatosUsuario(uid, key, value) {
+  localStorage.setItem(getUsuarioKey(uid, key), JSON.stringify(value));
+}
+
+// ===== ENVIAR SOLICITUD =====
+window.enviarSolicitud = function() {
+  const nombre = document.getElementById('ing-nombre').value.trim();
+  const email = document.getElementById('ing-email').value.trim();
+  const quien = document.getElementById('ing-quien').value.trim();
+  const busca = document.getElementById('ing-busca').value.trim();
+  const saber = document.getElementById('ing-saber').value.trim();
+  const ordenes = document.getElementById('ing-ordenes').value;
+  const cuales = document.getElementById('ing-ordenes-cuales').value.trim();
+  const hermano = document.getElementById('ing-hermano').value.trim();
+  const mensaje = document.getElementById('ing-mensaje').value.trim();
+  const errEl = document.getElementById('ing-error');
+  const okEl = document.getElementById('ing-success');
+  
+  errEl.style.display = 'none';
+  okEl.style.display = 'none';
+  
+  if (!nombre || !email || !busca) {
+    errEl.textContent = 'Completa al menos nombre, correo y motivación.';
+    errEl.style.display = 'block';
+    return;
+  }
+  
+  // Construir el mensaje para el correo
+  const asunto = encodeURIComponent('Solicitud de Ingreso - OCTS');
+  const cuerpo = encodeURIComponent(
+    `✠ SOLICITUD DE INGRESO A LA ORDEN DE CABALLEROS DEL TEMPLO DEL SUR ✠\n\n` +
+    `Nombre Completo: ${nombre}\n` +
+    `Correo Electrónico: ${email}\n` +
+    `Quién eres: ${quien || 'No especificado'}\n` +
+    `Qué busca en la Orden: ${busca}\n` +
+    `Qué quiere saber: ${saber || 'No especificado'}\n` +
+    `Órdenes previas: ${ordenes === 'no' ? 'Ninguna' : ordenes}\n` +
+    `(Detalles): ${cuales || 'N/A'}\n` +
+    `Hermano que presenta: ${hermano || 'Ninguno'}\n` +
+    `Mensaje adicional: ${mensaje || 'No especificado'}\n\n` +
+    `---\n` +
+    `"Por el mérito del linaje de la Orden de los Caballeros del Templo del Sur, concédenos gracia y gloria."`
+  );
+  
+  // Enviar por correo (mailto)
+  const mailtoLink = `mailto:briargg3@gmail.com?subject=${asunto}&body=${cuerpo}`;
+  
+  // Abrir el cliente de correo
+  window.open(mailtoLink, '_blank');
+  
+  // Mostrar mensaje de éxito
+  okEl.textContent = '✠ Carta enviada. El Temple la recibirá. Non nobis, Domine.';
+  okEl.style.display = 'block';
+  
+  // Limpiar campos
+  ['ing-nombre', 'ing-email', 'ing-quien', 'ing-busca', 'ing-saber', 'ing-ordenes-cuales', 'ing-hermano', 'ing-mensaje']
+    .forEach(id => document.getElementById(id).value = '');
+  document.getElementById('ing-ordenes').value = 'no';
+};
+
+// ===== AUTH STATE =====
+onAuthStateChanged(auth, (user) => {
+  const panel = document.getElementById('user-panel');
+  const navAuth = document.getElementById('nav-auth');
+  if (user) {
+    window.currentUser = user;
+    panel.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    const nombreReal = user.displayName || user.email.split('@')[0];
+    document.getElementById('perfil-nombre-real').textContent = nombreReal;
+    
+    const nombreSimbolico = getDatosUsuario(user.uid, 'nombre_simbolico', 'Hermano del Temple');
+    document.getElementById('perfil-nombre-simbolico').textContent = nombreSimbolico;
+    document.getElementById('nombre-actual-label').textContent = '✠ ' + nombreSimbolico;
+    document.getElementById('panel-username').textContent = nombreSimbolico;
+    
+    navAuth.innerHTML = `<span style="font-family:'Cinzel',serif;font-size:.75rem;color:var(--gold-l);">${nombreSimbolico}</span>
+      <button class="btn-nav btn-outline" onclick="logoutUser()">Salir</button>`;
+    
+    renderizarMuro();
+    cargarProgreso(user.uid);
+    renderizarRuta(user.uid);
+  } else {
+    window.currentUser = null;
+    panel.style.display = 'none';
+    document.body.style.overflow = '';
+    navAuth.innerHTML = `<a class="btn-nav btn-outline" onclick="openModal()">Ingresar</a>
+      <a class="btn-nav btn-solid" href="#ingreso">Solicitar Ingreso</a>`;
+  }
+});
+
+// ===== LOGIN =====
+window.loginUser = async function() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+    closeModal();
+  } catch(e) {
+    errEl.textContent = 'Credenciales incorrectas. Verifica tu correo y contraseña.';
+    errEl.style.display = 'block';
+  }
+};
+
+// ===== LOGOUT =====
+window.logoutUser = async function() {
+  await signOut(auth);
+};
+
+// ===== MODAL =====
+window.openModal = function() {
+  document.getElementById('modal-overlay').classList.add('open');
+};
+window.closeModal = function() {
+  document.getElementById('modal-overlay').classList.remove('open');
+};
+window.closeModalOutside = function(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+};
+
+// ===== PERFIL =====
+window.actualizarNombreSimbolico = function() {
+  const input = document.getElementById('input-nombre-simbolico');
+  const nuevo = input.value.trim();
+  if (!nuevo || !window.currentUser) return;
+  
+  const uid = window.currentUser.uid;
+  setDatosUsuario(uid, 'nombre_simbolico', nuevo);
+  
+  document.getElementById('perfil-nombre-simbolico').textContent = nuevo;
+  document.getElementById('nombre-actual-label').textContent = '✠ ' + nuevo;
+  document.getElementById('panel-username').textContent = nuevo;
+  input.value = '';
+  
+  const navAuth = document.getElementById('nav-auth');
+  navAuth.innerHTML = `<span style="font-family:'Cinzel',serif;font-size:.75rem;color:var(--gold-l);">${nuevo}</span>
+    <button class="btn-nav btn-outline" onclick="logoutUser()">Salir</button>`;
+  
+  renderizarMuro();
+};
+
+// ===== RUTA =====
+function renderizarRuta(uid) {
+  const container = document.getElementById('ruta-grid');
+  const leidos = getDatosUsuario(uid, 'lecturas_leidos', {});
+  
+  const escuelas = {
+    cabala: { icono: '🕯️', nombre: 'Cábala', desc: 'Árbol de la Vida', libros: ['torah', 'fortune', 'saban'] },
+    rosacrucismo: { icono: '🌹', nombre: 'Rosacrucismo', desc: 'Fama Fraternitatis', libros: ['heindel1', 'concepto'] },
+    masonica: { icono: '🔺', nombre: 'Instrucción Masónica', desc: 'Rito Escocés', libros: ['octs'] },
+    hermetismo: { icono: '☿', nombre: 'Hermetismo', desc: 'Corpus Hermeticum', libros: [] },
+    pitagorismo: { icono: '△', nombre: 'Pitagorismo', desc: 'Tetractys', libros: [] },
+    alquimia: { icono: '⚗️', nombre: 'Alquimia', desc: 'Gran Obra', libros: [] }
+  };
+  
+  let html = '';
+  for (const [id, escuela] of Object.entries(escuelas)) {
+    const total = escuela.libros.length || 1;
+    const leidosCount = escuela.libros.filter(l => leidos[l]).length;
+    const progreso = total > 0 ? Math.round((leidosCount / total) * 100) : 0;
+    const completada = progreso === 100;
+    
+    html += `<div class="ruta-item ${completada ? 'completada' : ''}" onclick="abrirEscuela('${id}')">
+      <div class="icono">${escuela.icono}</div>
+      <h4>${escuela.nombre}</h4>
+      <p>${escuela.desc}</p>
+      <div class="progreso"><div class="progreso-bar" style="width:${progreso}%"></div></div>
+    </div>`;
+  }
+  container.innerHTML = html;
+}
+
+// ===== ACORDEÓN =====
+window.toggleAcordeon = function(header) {
+  const body = header.nextElementSibling;
+  const flecha = header.querySelector('.flecha');
+  body.classList.toggle('abierto');
+  flecha.classList.toggle('abierto');
+};
+
+window.abrirEscuela = function(id) {
+  const mapeo = {
+    'cabala': 0, 'rosacrucismo': 1, 'masonica': 2,
+    'hermetismo': 3, 'pitagorismo': 4, 'alquimia': 5
+  };
+  const index = mapeo[id];
+  if (index !== undefined) {
+    const headers = document.querySelectorAll('.escuela-acordeon-header');
+    if (headers[index]) {
+      const body = headers[index].nextElementSibling;
+      const flecha = headers[index].querySelector('.flecha');
+      body.classList.add('abierto');
+      flecha.classList.add('abierto');
+      headers[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+};
+
+// ===== PROGRESO =====
+window.marcarLeido = function(btn, libroId) {
+  if (!window.currentUser) return;
+  const uid = window.currentUser.uid;
+  const leidos = getDatosUsuario(uid, 'lecturas_leidos', {});
+  leidos[libroId] = !leidos[libroId];
+  setDatosUsuario(uid, 'lecturas_leidos', leidos);
+  
+  btn.classList.toggle('leido');
+  btn.textContent = leidos[libroId] ? '✓ Leído' : '✓ Marcar como leído';
+  renderizarRuta(uid);
+};
+
+window.guardarNota = function(libroId, texto) {
+  if (!window.currentUser) return;
+  const uid = window.currentUser.uid;
+  const notas = getDatosUsuario(uid, 'lecturas_notas', {});
+  notas[libroId] = texto;
+  setDatosUsuario(uid, 'lecturas_notas', notas);
+  
+  const notaEl = document.getElementById(`notas-${libroId}`);
+  if (notaEl) {
+    notaEl.classList.add('visible');
+    setTimeout(() => notaEl.classList.remove('visible'), 3000);
+  }
+};
+
+function cargarProgreso(uid) {
+  if (!uid) return;
+  const leidos = getDatosUsuario(uid, 'lecturas_leidos', {});
+  const notas = getDatosUsuario(uid, 'lecturas_notas', {});
+  
+  document.querySelectorAll('.libro-card').forEach(card => {
+    const libroId = card.dataset.libro;
+    if (leidos[libroId]) {
+      const btn = card.querySelector('.btn-progreso');
+      if (btn) { btn.classList.add('leido'); btn.textContent = '✓ Leído'; }
+    }
+    if (notas[libroId]) {
+      const textarea = card.querySelector('textarea');
+      if (textarea) textarea.value = notas[libroId];
+    }
+  });
+}
+
+// ===== MURO =====
+function getPreguntas() {
+  try { return JSON.parse(localStorage.getItem('muro_preguntas')) || []; } catch { return []; }
+}
+function guardarPreguntas(preguntas) {
+  localStorage.setItem('muro_preguntas', JSON.stringify(preguntas));
+}
+
+window.publicarPregunta = function() {
+  const input = document.getElementById('input-pregunta');
+  const texto = input.value.trim();
+  if (!texto) return;
+  if (!window.currentUser) {
+    alert('Debes iniciar sesión para publicar.');
+    return;
+  }
+  const uid = window.currentUser.uid;
+  const nombreSimbolico = getDatosUsuario(uid, 'nombre_simbolico', 'Hermano del Temple');
+  
+  const preguntas = getPreguntas();
+  preguntas.unshift({
+    id: Date.now(),
+    autor: nombreSimbolico,
+    uid: uid,
+    texto: texto,
+    fecha: new Date().toISOString(),
+    respuestas: []
+  });
+  guardarPreguntas(preguntas);
+  input.value = '';
+  renderizarMuro();
+};
+
+window.responderPregunta = function(preguntaId) {
+  const input = document.getElementById(`resp-input-${preguntaId}`);
+  const texto = input.value.trim();
+  if (!texto) return;
+  if (!window.currentUser) {
+    alert('Debes iniciar sesión para responder.');
+    return;
+  }
+  const uid = window.currentUser.uid;
+  const nombreSimbolico = getDatosUsuario(uid, 'nombre_simbolico', 'Hermano del Temple');
+  
+  const preguntas = getPreguntas();
+  const p = preguntas.find(q => q.id === preguntaId);
+  if (p) {
+    p.respuestas.push({
+      autor: nombreSimbolico,
+      uid: uid,
+      texto: texto,
+      fecha: new Date().toISOString()
+    });
+    guardarPreguntas(preguntas);
+    renderizarMuro();
+  }
+};
+
+function renderizarMuro() {
+  const container = document.getElementById('muro-container');
+  const preguntas = getPreguntas();
+  if (preguntas.length === 0) {
+    container.innerHTML = `<p style="color:var(--crema-d);text-align:center;padding:2rem 0;">Aún no hay preguntas. Sé el primero en preguntar ✠</p>`;
+    return;
+  }
+  let html = '';
+  preguntas.forEach(q => {
+    const fecha = new Date(q.fecha).toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' });
+    html += `<div class="pregunta-item">
+      <div class="pregunta-header">
+        <span class="pregunta-autor">✠ ${q.autor}</span>
+        <span class="pregunta-fecha">${fecha}</span>
+      </div>
+      <div class="pregunta-texto">${q.texto}</div>
+      <div class="pregunta-respuestas">`;
+    if (q.respuestas && q.respuestas.length > 0) {
+      q.respuestas.forEach(r => {
+        const rf = new Date(r.fecha).toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' });
+        html += `<div class="respuesta-item">
+          <span class="respuesta-autor">◈ ${r.autor}</span>
+          <span class="respuesta-texto">${r.texto}</span>
+          <span class="respuesta-fecha">${rf}</span>
+        </div>`;
+      });
+    }
+    html += `</div>
+      <div class="nueva-respuesta">
+        <input type="text" id="resp-input-${q.id}" placeholder="Escribe una respuesta...">
+        <button onclick="responderPregunta(${q.id})">Responder</button>
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// ===== SCROLL =====
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('solid', window.scrollY > 60);
+});
+
+// ===== REVEAL =====
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .filos-card, .dec-item, .tl-item').forEach(el => obs.observe(el));
+document.querySelectorAll('.filos-card').forEach((el, i) => el.style.transitionDelay = `${i * .08}s`);
+document.querySelectorAll('.dec-item').forEach((el, i) => el.style.transitionDelay = `${i * .06}s`);
+document.querySelectorAll('.tl-item').forEach((el, i) => el.style.transitionDelay = `${i * .1}s`);
+</script>
+</body>
+</html>
